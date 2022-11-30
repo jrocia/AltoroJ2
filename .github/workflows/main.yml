@@ -38,11 +38,11 @@ jobs:
         run: |
           "login_file ${{env.aseHostname}} ${{env.aseToken}} -acceptssl" | out-file script.scan
           "RUNAS AUTO" | out-file -append script.scan
-          "oa `"$(artifactFolder)\$(artifactName)`" -appserver_type Tomcat7 -no_ear_project" | out-file -append script.scan
-          "ra `"$(artifactFolder)\$(artifactName).ozasmt`" -scanconfig `"Normal scan`" -name `"$(artifactName)-$(Build.BuildNumber)`"" | out-file -append script.scan
-          "report Findings zip `"$(artifactName).zip`" `"$(artifactFolder)\$(artifactName).ozasmt`" -includeSrcBefore:5 -includeSrcAfter:5 -includeTrace:definitive -includeTrace:suspect -includeHowToFix" | out-file -append script.scan
-          "pa `"$(artifactFolder)\$(artifactName).ozasmt`"" | out-file -append script.scan
-          "publishassessase `"$(artifactFolder)\$(artifactName).ozasmt`" -aseapplication `"$(aseAppName)`" -name `"$(artifactName)-$(Build.BuildNumber)`"" | out-file -append script.scan
+          "oa `"${{env.artifactFolder}}\${{env.artifactName}}`" -appserver_type Tomcat7 -no_ear_project" | out-file -append script.scan
+          "ra `"${{env.artifactFolder}}\${{env.artifactName}}.ozasmt`" -scanconfig `"Normal scan`" -name `"${{env.artifactName}}-${{Build.BuildNumber}}`"" | out-file -append script.scan
+          "report Findings zip `"${{env.artifactName}}.zip`" `"${{env.artifactFolder}}\${{env.artifactName}}.ozasmt`" -includeSrcBefore:5 -includeSrcAfter:5 -includeTrace:definitive -includeTrace:suspect -includeHowToFix" | out-file -append script.scan
+          "pa `"${{env.artifactFolder}}\${{env.artifactName}}.ozasmt`"" | out-file -append script.scan
+          "publishassessase `"${{env.artifactFolder}}\${{env.artifactName}}.ozasmt`" -aseapplication `"${{env.aseAppName}}`" -name `"${{env.artifactName}}-${{Build.BuildNumber}}`"" | out-file -append script.scan
           "exit" | out-file -append script.scan
           
 #      - name: Import Results
