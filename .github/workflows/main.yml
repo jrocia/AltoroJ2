@@ -36,6 +36,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
+          env
           "login_file ${{env.aseHostname}} ${{env.aseToken}} -acceptssl" | out-file script.scan
           "RUNAS AUTO" | out-file -append script.scan
           "oa `"${{env.artifactFolder}}\${{env.artifactName}}`" -appserver_type Tomcat7 -no_ear_project" | out-file -append script.scan
