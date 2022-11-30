@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 env:
- artifactFolder: ${{GITHUB_WORKSPACE}}\s\AltoroJ 3.1.1\build\libs
+ artifactFolder: ${{env.GITHUB_WORKSPACE}}\s\AltoroJ 3.1.1\build\libs
  artifactName: altoromutual.war
  aseAppName: AltoroJ
  aseHostname: ase.lab.local
